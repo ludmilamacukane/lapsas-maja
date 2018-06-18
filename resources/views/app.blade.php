@@ -13,10 +13,10 @@
 
     <title>{{ config('app.name', 'Laravel') }}</title>
 
-    <!-- Scripts
-    <script src="{{ asset('js/app.js') }}" defer></script> -->
+    <!-- Scripts -->
+    <script src="{{ asset('js/app.js') }}" defer></script>
 
-    <!--JQuery-->
+    <!--JQuery -->
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     
     <!-- Fonts -->
@@ -37,25 +37,38 @@
             </div>
             <nav>
                 <ul class="nav nav-pills float-right">
-                    <li class="nav-item">
-                        <a class="nav-link active" href="{{ url('/') }}">
-                            {{ config('app.name', 'Laravel') }}
+                    <li class="nav-item"><a class="nav-link" href="{{ url('/') }}">Sakumlapa</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/products">Produkti</a></li>
+                    <li><a class="nav-link" href="/cart">Grozs</a></li>
+                    @guest
+                    <li><a class="nav-link" href="{{ route('login') }}">Ieiet</a></li>
+                    <li><a class="nav-link" href="{{ route('register') }}">Registracija</a></li>
+                    @else
+                    <li class="nav-item dropdown">
+                        <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                            {{ Auth::user()->name }} <span class="caret"></span>
                         </a>
+
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="/orders">Pasutijumi</a>
+                            <a class="dropdown-item" href="{{ route('logout') }}"
+                               onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                Iziet
+                            </a>
+
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                @csrf
+                            </form>
+                        </div>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Par mums</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Kontakti</a>
-                    </li>
+                    @endguest
                 </ul>
             </nav>
             <h3 class="text-muted">Lapsas Māja</h3>
         </header>
         <main>
-            <div class="my-main">
-                @yield('content')
-            </div>
+            @yield('content')
         </main>
 
         <footer class="my-footer"><p>&copy; Ludmila 2018</p></footer>

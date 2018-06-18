@@ -41,4 +41,8 @@ class User extends Authenticatable
     public function orders() {
         return $this->hasMany('App\Order');
     }
+
+    public function isAdmin() {
+        return 'admin' === strtolower(Role::find($this->role_id)->name);
+    }
 }
