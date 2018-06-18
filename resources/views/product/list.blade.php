@@ -9,15 +9,8 @@
     </div>
 
     <div class="list-group-item">
-        <div class="card-deck">
-            <?php $i=0; ?>
-            @foreach ( $products as $product )
-            @if ($i==2)
-            <?php $i=1; ?>
-        </div>
-        <div class="card-deck">
-            @else <?php $i++; ?>
-            @endif
+        @foreach ( $products as $product )
+        <div class="card-deck mb-2">
             <div class="card">
                 <div class="card-body">
                     <h5 class="card-title">
@@ -25,18 +18,21 @@
                         <span class="badge badge-info">{{ $product->price }} EUR</span>
                     </h5>
                     <div class="card-text">
-                        <span>{{ $product->description }}</span>
+                        <span>{!! $product->description !!}</span>
+                    </div>
+                    <div class="card-text">
+                        <a class="btn btn-outline-info btn-sm" href='{{ url('cart/add', $product->id) }}'>Pievienot grozam</a>
                     </div>
                     @if ( !Auth::guest() && Auth::user()->isAdmin() )
-                    <p class="card-text">
+                    <p class="card-text mt-1">
                         <a class="btn btn-warning btn-sm" href="{{ url('product', $product['id']) }}/edit">Rediget</a>
                         <a class="btn btn-danger btn-sm" href="{{ url('product', $product['id']) }}/remove">Dzest</a>
                     </p>
                     @endif
                 </div>
             </div>
-            @endforeach
         </div>
+        @endforeach
     </div>
 </div>
 @endsection

@@ -26,7 +26,7 @@
 
                             <div class="form-group">
                                 {!! Form::label('description', 'Apraksts:') !!}
-                                {!! Form::text('description', $product->description, ['class' => 'form-control']) !!}
+                                {!! Form::textarea('description', $product->description, ['class' => 'form-control']) !!}
                             </div>
 
                             <div class="form-group">
