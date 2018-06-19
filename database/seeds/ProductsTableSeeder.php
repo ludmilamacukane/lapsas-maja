@@ -15,12 +15,12 @@ class ProductsTableSeeder extends Seeder
         Product::truncate();
         Product::create([
             'name'        => 'Šokolādes braunijs',
-            'description' => '1kg',
+            'description' => '1 gabals',
             'price'       => 9.99
         ]);
         Product::create([
             'name'        => 'Siera kuka',
-            'description' => '1kg',
+            'description' => '1 gabals',
             'price'       => 15.00
         ]);
     }
