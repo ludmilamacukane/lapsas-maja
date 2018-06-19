@@ -13,7 +13,7 @@ class ProductsController extends Controller
      */
     public function index()
     {
-        return view('product.list', ['products' => Product::all()]);
+        return view('product.list', ['products' => Product::where('enabled', true)->get()]);
     }
 
     /**
@@ -22,7 +22,8 @@ class ProductsController extends Controller
      */
     public function show(int $id)
     {
-        return view('product.show', ['product' => Product::find($id)]);
+        $product = Product::where('id', $id)->where('enabled', true)->get()->first();
+        return view('product.show', ['product' => $product]);
     }
 
     /**
@@ -53,7 +54,10 @@ class ProductsController extends Controller
     public function remove(int $id)
     {
         if (true === Auth::user()->isAdmin()) {
-            Product::find($id)->delete();
+            $product          = Product::find($id);
+            $product->enabled = false;
+            $product->update();
+
             return redirect()->action('ProductsController@index');
         }
     }
