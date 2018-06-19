@@ -26,3 +26,8 @@ Route::post('/product/{id}/update', 'ProductsController@update');
 Route::get('cart', 'CartController@index');
 Route::get('cart/add/{id}', 'CartController@add');
 Route::get('cart/remove/{id}', 'CartController@remove');
+
+Route::get('orders', 'OrderController@index');
+Route::get('order/create', 'OrderController@create');
+Route::post('order/store', 'OrderController@store');
+Route::get('order/{id}', 'OrderController@show');

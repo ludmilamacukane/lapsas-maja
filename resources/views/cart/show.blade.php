@@ -1,7 +1,7 @@
 @extends('app')
 @section('content')
 <div class="container">
-    <div class="row justify-content-center">
+    <div class="row justify-content-center mb-5">
         <div class="col-sm">
             <div class="card">
                 <div class="card-body">

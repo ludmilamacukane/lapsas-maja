@@ -9,7 +9,7 @@
                     <p class="card-text">{!! $product->description !!}</p>
                     <p class="card-text">Cena: <span class="badge badge-info">{{ $product->price }} EUR</span></p>
                     <p class="card-text">
-                        <a class="btn btn-outline-primary btn-sm" href='{{ url('cart/add', $product->id) }}'>Pievienot grozam</a>
+                        <a class="btn btn-outline-info btn-sm" href='{{ url('cart/add', $product->id) }}'>Pievienot grozam</a>
                     </p>
                     @if ( !Auth::guest() && Auth::user()->isAdmin() )
                     <p class="card-text mt-1">

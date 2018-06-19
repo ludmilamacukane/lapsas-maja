@@ -34,7 +34,7 @@ class CartController extends Controller
             }
         }
         
-        return view('cart_show', ['total' => $total, 'products' => $result]);
+        return view('cart.show', ['total' => $total, 'products' => $result]);
     }
 
     /**

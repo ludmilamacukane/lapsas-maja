@@ -17,7 +17,7 @@ class CreateOrdersTable extends Migration
             $table->increments('id');
             $table->string('address');
             $table->integer('phone');
-            $table->string('comment');
+            $table->string('comment')->nullable();
             $table->timestamps();
         });
 

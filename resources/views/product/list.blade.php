@@ -1,6 +1,6 @@
 @extends('app')
 @section('content')
-<div class="list-group">
+<div class="list-group mb-5">
     <div class="list-group-item list-group-item-info">
         <h4 class="float-left">Produkti</h4>
         @if ( !Auth::guest() && Auth::user()->isAdmin() )
